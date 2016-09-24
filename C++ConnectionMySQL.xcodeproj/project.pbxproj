@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF3F32751C26A49A002A0472 /* MySQLConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF3F32731C26A49A002A0472 /* MySQLConnector.cpp */; };
+		FF3F327C1C26B037002A0472 /* DataConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF3F327A1C26B037002A0472 /* DataConfiguration.cpp */; };
+		FF3F327F1C26CC3A002A0472 /* MySQLQueryResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF3F327D1C26CC3A002A0472 /* MySQLQueryResult.cpp */; };
 		FF71B7E01C252125003D7406 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF71B7DF1C252125003D7406 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +26,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FF3F32731C26A49A002A0472 /* MySQLConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MySQLConnector.cpp; sourceTree = "<group>"; };
+		FF3F32741C26A49A002A0472 /* MySQLConnector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MySQLConnector.hpp; sourceTree = "<group>"; };
+		FF3F327A1C26B037002A0472 /* DataConfiguration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataConfiguration.cpp; sourceTree = "<group>"; };
+		FF3F327B1C26B037002A0472 /* DataConfiguration.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataConfiguration.hpp; sourceTree = "<group>"; };
+		FF3F327D1C26CC3A002A0472 /* MySQLQueryResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MySQLQueryResult.cpp; sourceTree = "<group>"; };
+		FF3F327E1C26CC3A002A0472 /* MySQLQueryResult.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MySQLQueryResult.hpp; sourceTree = "<group>"; };
 		FF71B7DC1C252125003D7406 /* C++ConnectionMySQL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "C++ConnectionMySQL"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71B7DF1C252125003D7406 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,6 +47,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF3F32701C26A3A3002A0472 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				FF3F32741C26A49A002A0472 /* MySQLConnector.hpp */,
+				FF3F327B1C26B037002A0472 /* DataConfiguration.hpp */,
+				FF3F327E1C26CC3A002A0472 /* MySQLQueryResult.hpp */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
+		FF3F32721C26A3BD002A0472 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				FF3F327D1C26CC3A002A0472 /* MySQLQueryResult.cpp */,
+				FF3F327A1C26B037002A0472 /* DataConfiguration.cpp */,
+				FF3F32731C26A49A002A0472 /* MySQLConnector.cpp */,
+				FF71B7DF1C252125003D7406 /* main.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		FF71B7D31C252125003D7406 = {
 			isa = PBXGroup;
 			children = (
@@ -57,7 +87,8 @@
 		FF71B7DE1C252125003D7406 /* C++ConnectionMySQL */ = {
 			isa = PBXGroup;
 			children = (
-				FF71B7DF1C252125003D7406 /* main.cpp */,
+				FF3F32701C26A3A3002A0472 /* Header */,
+				FF3F32721C26A3BD002A0472 /* Source */,
 			);
 			path = "C++ConnectionMySQL";
 			sourceTree = "<group>";
@@ -118,6 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF3F327F1C26CC3A002A0472 /* MySQLQueryResult.cpp in Sources */,
+				FF3F32751C26A49A002A0472 /* MySQLConnector.cpp in Sources */,
+				FF3F327C1C26B037002A0472 /* DataConfiguration.cpp in Sources */,
 				FF71B7E01C252125003D7406 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +241,20 @@
 		FF71B7E41C252125003D7406 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/mysql/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/mysql/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-lmysqlcppconn",
+					"-lm",
+					"-lmysqlclient",
+					"-lz",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -214,6 +262,20 @@
 		FF71B7E51C252125003D7406 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/mysql/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/mysql/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-lmysqlcppconn",
+					"-lm",
+					"-lmysqlclient",
+					"-lz",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -237,6 +299,7 @@
 				FF71B7E51C252125003D7406 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
